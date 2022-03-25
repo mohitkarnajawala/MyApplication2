@@ -23,6 +23,11 @@
             android:title="@string/menu_Livedata" />
 
         <item
+            android:id="@+id/nav_Quotes"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_Quotes" />
+
+        <item
             android:id="@+id/nav_share"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_share" />

@@ -24,16 +24,21 @@
             android:name=".LiveDataExample.LiveDataMain"
             android:exported="false"
             android:label="@string/title_activity_live_data_main"
-            android:theme="@style/Theme.MyApplication.NoActionBar" />
+            />
        <!-- <activity
             android:name=".recyclerview.MainActivityRecyclerview"
             android:exported="false"
             android:label="@string/title_activity_main_recyclerview"
             android:theme="@style/Theme.MyApplication.NoActionBar" />-->
-      <!--  <activity
+        <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
-            android:label="@string/title_activity_login" />-->
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".ui.registration.RegisterActivity"
+            android:exported="false"
+             />
+        <activity android:name=".Quotes.ActivityMyQuotes"/>
         <activity
             android:name=".SplashScreen"
             android:exported="true">

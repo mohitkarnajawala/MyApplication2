@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +28,16 @@ class LiveDataMain : AppCompatActivity() {
 
         //set the layout using binding object
         setContentView(binding.root)
+
+        // calling the action bar
+        var actionBar = getSupportActionBar()
+        actionBar?.let {
+            it.setTitle("Contact")
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setHomeButtonEnabled(true)
+        }
+
+       
 
         Log.e(TAG, "onCreate")
 
@@ -55,6 +66,22 @@ class LiveDataMain : AppCompatActivity() {
         })
 
 
+    }
+
+    // this event will enable the back
+    // function to the button on press
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onContextItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 

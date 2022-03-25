@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.View
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -14,10 +15,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplication.Constant.AppConstant
 import com.example.myapplication.Constant.showToastMessage
 import com.example.myapplication.LiveDataExample.LiveDataMain
 import com.example.myapplication.MutableExample.MutableExampleFragment
+import com.example.myapplication.Quotes.ActivityMyQuotes
 import com.example.myapplication.databinding.ActivityMainDraweraBinding
+import com.example.myapplication.databinding.NavHeaderMainDraweraBinding
 import com.example.myapplication.ui.gallery.GalleryFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.lang.reflect.Array.newInstance
@@ -29,6 +33,7 @@ class MainDraweraActivity : AppCompatActivity() {
 
     companion object{
         val Tag: String= MainDraweraActivity::class.java.simpleName
+        lateinit var  username:String
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +48,8 @@ class MainDraweraActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
 
         val navView: NavigationView = binding.navView
@@ -50,6 +57,10 @@ class MainDraweraActivity : AppCompatActivity() {
         val navView1: BottomNavigationView = binding.appBarMainDrawera.containMain.navView1
 
         val navController = findNavController(R.id.nav_host_fragment_content_main_drawera)
+
+        val headerView: View = binding.navView.getHeaderView(0)
+
+        val headerBinding: NavHeaderMainDraweraBinding = NavHeaderMainDraweraBinding.bind(headerView)
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -63,7 +74,8 @@ class MainDraweraActivity : AppCompatActivity() {
                 R.id.navigation_notifications,
                 R.id.navigation_profile,
                 R.id.nav_share,
-                R.id.nav_livedata
+                R.id.nav_livedata,
+                R.id.nav_Quotes
 
             ), drawerLayout
         )
@@ -71,6 +83,14 @@ class MainDraweraActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView1.setupWithNavController(navController)
+
+        val bundle:Bundle? = intent.extras
+
+        bundle?.let {
+            username= it.getString(AppConstant.username).toString()
+            Log.e(Tag, username)
+            headerBinding.textView.text= username
+        }
 
        /* navView.setNavigationItemSelectedListener {
 
@@ -102,6 +122,10 @@ class MainDraweraActivity : AppCompatActivity() {
 
                     val intent= Intent(this,LiveDataMain::class.java)
                     startActivity(intent)
+                    true
+                }
+                R.id.nav_Quotes ->{
+                    startActivity(Intent(this,ActivityMyQuotes::class.java))
                     true
                 }
                 else->{

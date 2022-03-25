@@ -1,6 +1,7 @@
 package com.example.myapplication.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -12,9 +13,13 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
+import com.example.myapplication.Constant.AppConstant
+import com.example.myapplication.Constant.showToastMessage
+import com.example.myapplication.MainDraweraActivity
 import com.example.myapplication.databinding.ActivityLoginBinding
 
 import com.example.myapplication.R
+import com.example.myapplication.ui.registration.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -31,8 +36,10 @@ class LoginActivity : AppCompatActivity() {
         //Initialize the id to variables
         val username = binding.username
         val password = binding.password
+
         val login = binding.login
         val loading = binding.loading
+        val signup= binding.tvSignUp
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
@@ -70,15 +77,18 @@ class LoginActivity : AppCompatActivity() {
            // finish()
         })
 
+        signup?.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
+            finish()
+        }
+
         username.afterTextChanged {
-            loginViewModel.loginDataChanged(username.text.toString(), password.text.toString()
-            )
+            loginViewModel.loginDataChanged(username = username.text.toString(), password = password.text.toString())
         }
 
         password.apply {
             afterTextChanged {
-                loginViewModel.loginDataChanged(username.text.toString(), password.text.toString()
-                )
+                loginViewModel.loginDataChanged(username.text.toString(), password.text.toString())
             }
 
             setOnEditorActionListener { _, actionId, _ ->
@@ -103,15 +113,15 @@ class LoginActivity : AppCompatActivity() {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
-        Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
-        ).show()
+
+        val intent= Intent(this,MainDraweraActivity::class.java)
+        intent.putExtra(AppConstant.username,displayName)
+        startActivity(intent)
+        showToastMessage("$welcome $displayName",Toast.LENGTH_LONG)
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
-        Toast.makeText(applicationContext, errorString, Toast.LENGTH_SHORT).show()
+        showToastMessage(errorString.toString())
     }
 }
 

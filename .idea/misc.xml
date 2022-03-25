@@ -6,12 +6,15 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.253125" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/drawable/rounded_border_edittext.xml" value="0.26615384615384613" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.151953125" />
+        <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout-w936dp/activity_login.xml" value="0.11022927689594356" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_bottom_navigation.xml" value="0.23143115942028986" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_live_data_main.xml" value="0.15353260869565216" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_login.xml" value="0.17617753623188406" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_main_drawera.xml" value="0.23143115942028986" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_main_recyclerview.xml" value="0.18614130434782608" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_mutable_example.xml" value="0.25416666666666665" />
+        <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_my_quotes_recycle_view.xml" value="0.190625" />
+        <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_registration.xml" value="0.2" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/activity_splash_screen.xml" value="0.17617753623188406" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/adapter_movie.xml" value="0.25416666666666665" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/app_bar_main_drawera.xml" value="0.23143115942028986" />
@@ -24,6 +27,7 @@
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/fragment_profile.xml" value="0.18614130434782608" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/fragment_second.xml" value="0.18614130434782608" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/item_contact.xml" value="0.2" />
+        <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/item_quotes.xml" value="0.190625" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/layout/nav_header_main_drawera.xml" value="0.23143115942028986" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/menu/activity_main_drawer.xml" value="0.25416666666666665" />
         <entry key="..\:/MyProjects/MyApplication2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />

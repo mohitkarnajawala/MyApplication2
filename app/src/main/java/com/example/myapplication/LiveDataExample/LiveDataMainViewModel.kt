@@ -11,7 +11,7 @@ class LiveDataMainViewModel : ViewModel() {
     private var contactsLiveData=MutableLiveData<MutableList<Contact>>()
 
     init {
-        contactsLiveData= MutableLiveData()
+
         contactsLiveData.value=creatContact()
     }
 
@@ -23,7 +23,7 @@ class LiveDataMainViewModel : ViewModel() {
             Log.e(TAG, "createContacts")
             val contacts = mutableListOf<Contact>()
             for (i in 1..150)
-                contacts.add(Contact("Person #$i", i))
+                contacts.add(Contact("Person$i", i))
 
             return contacts
 
