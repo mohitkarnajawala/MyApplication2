@@ -15,13 +15,20 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import com.example.myapplication.Constant.AppConstant
 import com.example.myapplication.Constant.showToastMessage
+import com.example.myapplication.Helper.ConnectionNetworkState
+import com.example.myapplication.Helper.NetworkAvailability
 import com.example.myapplication.LiveDataExample.LiveDataMain
+import com.example.myapplication.LocationUpdateService.LocationService
 import com.example.myapplication.MutableExample.MutableExampleFragment
 import com.example.myapplication.Quotes.ActivityMyQuotes
+import com.example.myapplication.activity.ActivityKotlinTopics
 import com.example.myapplication.databinding.ActivityMainDraweraBinding
 import com.example.myapplication.databinding.NavHeaderMainDraweraBinding
+import com.example.myapplication.session.Session
 import com.example.myapplication.ui.gallery.GalleryFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.lang.reflect.Array.newInstance
@@ -30,6 +37,7 @@ class MainDraweraActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainDraweraBinding
+
 
     companion object{
         val Tag: String= MainDraweraActivity::class.java.simpleName
@@ -49,6 +57,23 @@ class MainDraweraActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
+
+        val keyGenParameterSpec= MasterKeys.AES256_GCM_SPEC
+         val masterKeyAlias= MasterKeys.getOrCreate(keyGenParameterSpec)
+         val fileName="FILE.xml"
+        val sharedPreferences= EncryptedSharedPreferences.create(
+            fileName,
+            masterKeyAlias,
+            this,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM)
+
+        // storing a value
+        sharedPreferences
+            .edit()
+            .putString("name", "MohitKaranjawala")
+            .apply()
+        //Session(context = this).save("Name","Mohit Karanjawala")
 
         val drawerLayout: DrawerLayout = binding.drawerLayout
 
@@ -128,13 +153,33 @@ class MainDraweraActivity : AppCompatActivity() {
                     startActivity(Intent(this,ActivityMyQuotes::class.java))
                     true
                 }
+
+                R.id.nav_Quotes ->{
+                    startActivity(Intent(this,ActivityMyQuotes::class.java))
+                    true
+                }
+
+                R.id.nav_Service ->{
+                    startActivity(Intent(this, ActivityKotlinTopics::class.java))
+                    true
+                }
+
                 else->{
                     false
                 }
             }
         }
 
-        //showToastMessage("OnCreat",Toast.LENGTH_SHORT)
+        ConnectionNetworkState.get(layoutInflater.context).observe(this,{
+            if(it== NetworkAvailability.CONNECTED)
+            {
+                layoutInflater.context.showToastMessage("You are Online",
+                    Toast.LENGTH_SHORT)
+            }else{
+                layoutInflater.context.showToastMessage("Please check your Network Connection",
+                    Toast.LENGTH_SHORT)
+            }
+        })
 
     }
 

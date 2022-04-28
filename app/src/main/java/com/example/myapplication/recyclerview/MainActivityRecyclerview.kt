@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.Constant.showToastMessage
+import com.example.myapplication.Helper.ConnectionNetworkState
+import com.example.myapplication.Helper.NetworkAvailability
 import com.example.myapplication.databinding.ActivityMainRecyclerviewBinding
 import com.example.myapplication.databinding.FragmentHomeBinding
 
@@ -77,6 +79,8 @@ class MainActivityRecyclerview : Fragment() {
         viewModel.getAllMovies()
 
         Log.e(TAG,"Fragment:onCreatView")
+
+
 
         return root
     }

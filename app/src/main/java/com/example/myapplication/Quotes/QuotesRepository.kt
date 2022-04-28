@@ -18,4 +18,5 @@ class QuotesRepository(val quotesApi: QuotesApi) {
    }
     val quotes: LiveData<QuoteList>
         get() = quoteLiveData
+
 }

@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linfirst"
@@ -30,15 +23,87 @@
             android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="First Screen"
+            android:text="Android Kotlin Topics"
             android:textColor="@color/white"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
+    <Button
+        android:id="@+id/btnService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Service"
+        app:layout_constraintTop_toBottomOf="@+id/linfirst"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        />
 
 
+    <Button
+        android:id="@+id/btnJobIntentService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JobIntentService"
+        app:layout_constraintTop_toBottomOf="@+id/linfirst"
+        app:layout_constraintStart_toEndOf="@+id/btnService"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        />
 
+    <Button
+        android:id="@+id/btnEspresso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Espresso"
+        app:layout_constraintTop_toBottomOf="@+id/btnService"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        />
 
+    <Button
+        android:id="@+id/btnBiometric"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biometric"
+        app:layout_constraintTop_toBottomOf="@+id/btnService"
+        app:layout_constraintStart_toEndOf="@+id/btnEspresso"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:id="@+id/btnReactiveX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RX Android"
+        app:layout_constraintTop_toBottomOf="@+id/btnService"
+        app:layout_constraintStart_toEndOf="@+id/btnBiometric"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        />
+
+    <Button
+        android:id="@+id/btnCoroutine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coroutine"
+        app:layout_constraintTop_toBottomOf="@+id/btnEspresso"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        />
+    <Button
+        android:id="@+id/btnRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Room DB"
+        app:layout_constraintTop_toBottomOf="@+id/btnEspresso"
+        app:layout_constraintStart_toEndOf="@+id/btnCoroutine"
+        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

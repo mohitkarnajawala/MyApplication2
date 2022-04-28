@@ -3,14 +3,50 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- Required for foreground services on P+. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+<!--android:label="@string/app_name"-->
 
     <application
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="App ${variant}"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- TODO: Add your Google Maps API key here -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAiXmATvwCHa_HHqdeaYj6ciTDDLSp_WsY"/>
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+        <activity android:name="com.facebook.FacebookActivity"
+            android:configChanges=
+                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".MainDraweraActivity"
             android:exported="false"
@@ -49,6 +85,30 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".LocationUpdateService.LocationService" />
+        <activity android:name=".activity.ActivityKotlinTopics" />
+        <activity android:name=".activity.ActivityHelloService" />
+        <activity android:name=".activity.ActivityEspressoTestLanguage" />
+        <activity android:name=".activity.ActivityBiometric" />
+        <activity android:name=".activity.ActivityJobIntentService" />
+        <activity android:name=".coroutine.ActivityCoroutine" />
+        <activity android:name=".coroutine.ActivityAnotherCoroutine" />
+        <activity android:name=".reactivex.ActivityReactivEX" />
+        <activity android:name=".room.ActivityRoom" />
+
+        <service
+            android:name=".service.MyJobIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+
+        <service
+            android:name="com.example.myapplication.LocationUpdateService.ForegroundOnlyLocationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service android:name=".service.HelloService"
+            android:enabled="true"
+            android:exported="false"/>
 
     </application>
 

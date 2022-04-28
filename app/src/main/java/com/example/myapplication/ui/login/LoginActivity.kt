@@ -9,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
@@ -19,12 +20,26 @@ import com.example.myapplication.MainDraweraActivity
 import com.example.myapplication.databinding.ActivityLoginBinding
 
 import com.example.myapplication.R
+import com.example.myapplication.session.Session
 import com.example.myapplication.ui.registration.RegisterActivity
+import com.facebook.*
+import com.facebook.login.LoginResult
+import com.facebook.appevents.AppEventsLogger
+import com.facebook.login.LoginManager
+import java.util.*
+import com.facebook.FacebookException
+
+import com.facebook.FacebookCallback
+
+
+
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var callbackManager: CallbackManager
+    private val EMAIL = "email"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,13 +121,94 @@ class LoginActivity : AppCompatActivity() {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
+
+           /* binding.loginButton?.setOnClickListener{
+                binding.loginButton?.setReadPermissions(listOf(EMAIL))
+                callbackManager = CallbackManager.Factory.create()
+                binding.loginButton?.registerCallback(callbackManager, object :
+                    FacebookCallback<LoginResult?> {
+                    override fun onSuccess(loginResult: LoginResult?) {
+                        Log.d("MainActivity", "Facebook token: " + loginResult!!.accessToken.token)
+                        startActivity(
+                            Intent(
+                                applicationContext,
+                                MainDraweraActivity::class.java
+                            )
+                        )// App code
+                    }
+                    override fun onCancel() { // App code
+                    }
+                    override fun onError(exception: FacebookException) { // App code
+                    }
+                })
+
+                callbackManager = CallbackManager.Factory.create()
+                with(LoginManager) {
+                    getInstance().registerCallback(callbackManager,
+                                object : FacebookCallback<LoginResult?> {
+                                    override fun onSuccess(loginResult: LoginResult?) { // App code
+                                    }
+
+                                    override fun onCancel() { // App code
+                                    }
+
+                                    override fun onError(exception: FacebookException) { // App code
+                                    }
+
+                                    val accessToken = AccessToken.getCurrentAccessToken()
+                                    accessToken != null && !accessToken.isExpired
+                                })
+                }
+            }*/
+
+            callbackManager = CallbackManager.Factory.create()
+            binding.loginButton?.setReadPermissions(Arrays.asList(EMAIL))
+
+            // Callback registration
+            // Callback registration
+            binding.loginButton?.registerCallback(
+                callbackManager, object : FacebookCallback<LoginResult?> {
+
+                    override fun onCancel() {
+                        // App code
+                        Log.e("LoginACtivity","cancel")
+                    }
+
+                    override fun onError(exception: FacebookException) {
+                        // App code
+                        Log.e("LoginACtivity",""+exception)
+                    }
+
+                    override fun onSuccess(result: LoginResult?) {
+                        Log.e("LoginACtivity",""+result)
+                        startActivity(
+                            Intent(
+                                applicationContext,
+                                MainDraweraActivity::class.java
+                            )
+                        )
+                    }
+                })
         }
+    }
+
+
+    override fun onActivityResult(
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
+        callbackManager.onActivityResult(requestCode, resultCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
+        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
+
+
 
         val intent= Intent(this,MainDraweraActivity::class.java)
         intent.putExtra(AppConstant.username,displayName)
