@@ -32,6 +32,7 @@ class ActivityEspressoTestLanguageTest{
         onView(withId(R.id.german))    // ViewMatchers - withId(R.id.german) is to
                                        // specify that we are looking for Button
                                        // with id = R.id.german
+
             .perform(click())          // ViewActions - Performs click action on view.
 
         onView(withId(R.id.preferred_language))  // ViewMatchers - withId(R.id.preferred_language)

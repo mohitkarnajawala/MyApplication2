@@ -30,6 +30,8 @@ class ActivityReactivEX : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
         binding= FragmentHomeBinding.inflate(layoutInflater)
 
         setContentView(binding.root)

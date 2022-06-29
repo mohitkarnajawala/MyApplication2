@@ -1,9 +1,10 @@
 @file:JvmName("MyKotlinFileName")
 package com.example.myapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         getKotlinPractice();
+
+
     }
 
     fun getKotlinPractice(){
@@ -253,6 +256,7 @@ class MainActivity : AppCompatActivity() {
         //Outside Variable can be change or Mutate inside the Lambda function.
         multiply.addNumber(3,4){y,z-> result=y+z} // result variable used inside the lambda function in kotlin. and
         // also can change the value of it .
+
         Log.e("Clouser resiult:",""+result)
 
     // ********************* WITH AND APPLY SCOPE KEYWORD IN KOTLIN **********************************//
@@ -775,12 +779,25 @@ class MainActivity : AppCompatActivity() {
 
         var i=0
 
-       inner class Nested{
+      inner  class Nested{
 
             fun getValue(){
                 Log.e("Value","Value of "+i)
             }
         }
+    }
+
+    fun solutions(A: IntArray, K: Int): IntArray? {
+        for (i in 0 until K) {
+            val lastValue = A[A.size - 1]
+            var j = A.size - 1
+            while (j <= 0) {
+                A[j + 1] = A[j]
+                j--
+            }
+            A[0] = lastValue
+        }
+        return A
     }
 
 
