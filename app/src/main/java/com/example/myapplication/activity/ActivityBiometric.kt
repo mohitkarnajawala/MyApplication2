@@ -1,6 +1,7 @@
 package com.example.myapplication.activity
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
@@ -22,6 +23,7 @@ class ActivityBiometric:AppCompatActivity() {
         setContentView(binding.root)
 
         executor = ContextCompat.getMainExecutor(this)
+        Log.e("Biometric","Activity Biometric")
 
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
