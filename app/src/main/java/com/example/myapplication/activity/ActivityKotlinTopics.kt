@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.coroutine.ActivityCoroutine
+import com.example.myapplication.dagger.ActivityDagger
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.reactivex.ActivityReactivEX
 import com.example.myapplication.room.ActivityRoom
@@ -47,6 +48,14 @@ class ActivityKotlinTopics : AppCompatActivity() {
 
         binding.btnRoom.setOnClickListener {
             startActivity(Intent(this,ActivityRoom::class.java))
+        }
+
+        binding.btnDagger.setOnClickListener {
+            startActivity(Intent(this,ActivityDagger::class.java))
+        }
+
+        binding.btnHilt.setOnClickListener {
+            //startActivity(Intent(this, MainHiltActivity::class.java))
         }
 
     }

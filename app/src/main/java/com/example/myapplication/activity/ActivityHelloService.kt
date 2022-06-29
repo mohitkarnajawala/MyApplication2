@@ -11,11 +11,7 @@ import android.content.ComponentName
 import android.content.Context
 
 import android.os.IBinder
-
-
-
-
-
+import com.example.myapplication.service.MyServiceDemo
 
 
 class ActivityHelloService : AppCompatActivity() {
@@ -45,7 +41,7 @@ class ActivityHelloService : AppCompatActivity() {
 
         Log.e(TAG,"MainThread Id is : "+ Thread.currentThread().id)
 
-        serviceIntent = Intent(this,HelloService::class.java)
+        serviceIntent = Intent(this,MyServiceDemo::class.java)
 
         binding.btnStartService.setOnClickListener {
 
@@ -76,7 +72,7 @@ class ActivityHelloService : AppCompatActivity() {
             serviceConnection = object : ServiceConnection {
                 override fun onServiceConnected(componentName: ComponentName, iBinder: IBinder) {
                     val myServiceBinder: HelloService.MyServiceBinder = iBinder as HelloService.MyServiceBinder
-                  //  helloService = myServiceBinder.service
+                   // helloService = myServiceBinder.service
                     isServiceBound = true
                 }
 

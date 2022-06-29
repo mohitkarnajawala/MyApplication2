@@ -21,6 +21,7 @@ class QuotesAdapter(val context:Context , private val quoteList: List<Result>):
         return ViewHolder(vBinding)
     }
 
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val quote=quoteList[position]

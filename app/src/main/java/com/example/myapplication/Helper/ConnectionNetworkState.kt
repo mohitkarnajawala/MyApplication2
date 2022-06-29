@@ -10,8 +10,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 
-class ConnectionNetworkState constructor(private var context: Context) :
-    LiveData<NetworkAvailability>() {
+class ConnectionNetworkState constructor(private var context: Context) : LiveData<NetworkAvailability>() {
 
     companion object{
         @SuppressLint("StaticFieldLeak")
@@ -37,8 +36,7 @@ class ConnectionNetworkState constructor(private var context: Context) :
     private val connectivityBroadcastReceiver = object : BroadcastReceiver() {
         @RequiresApi(Build.VERSION_CODES.M)
         override fun onReceive(p0: Context?, p1: Intent?) {
-            val connectivityManager =
-                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val netInfo = connectivityManager.activeNetworkInfo
 
             value = if (netInfo != null && netInfo.isConnected) {

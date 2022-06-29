@@ -1,3 +1,4 @@
+/*
 package com.example.myapplication.hilt
 
 import android.util.Log
@@ -9,3 +10,4 @@ class UsersRepository @Inject constructor() {
         Log.e("Hilt:-","Save to DB")
     }
 }
+*/

@@ -1,12 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+   // id 'dagger.hilt.android.plugin'
+
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdk 31
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.example.myapplication"
@@ -83,8 +86,12 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
-    //Glide
+    //glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+
+    def work_version = "2.2.0"
+    implementation "androidx.work:work-runtime:$work_version"
 
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:29.2.0')
@@ -120,9 +127,19 @@ dependencies {
     // RxAndroid
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
 
+    //Room Database
     implementation "androidx.room:room-runtime:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
     implementation "androidx.room:room-ktx:2.4.2"
+
+    //Dagger Components
+    implementation 'com.google.dagger:dagger-android:2.35.1'
+    implementation 'com.google.dagger:dagger-android-support:2.35.1'
+    kapt "com.google.dagger:dagger-compiler:2.35.1"
+
+    //Hilt
+  //  implementation "com.google.dagger:hilt-android:2.38.1"
+   // kapt "com.google.dagger:hilt-compiler:2.38.1"
 
 
     //Testing JUnit and truth for Assertion
@@ -140,3 +157,8 @@ dependencies {
 
     implementation 'com.facebook.android:facebook-android-sdk:latest.release'
 }
+/*kapt {
+    javacOptions {
+        option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+    }
+}*/
